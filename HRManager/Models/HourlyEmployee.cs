@@ -14,14 +14,28 @@
         public HourlyEmployee():this(0, "tbd", "tbd", 15.0M)
         {
         }
-        
-        public decimal HourlyRate { get; set; }
+
+        private decimal hourlyRate;
+
+        public decimal HourlyRate
+        {
+            get { return hourlyRate; }
+            set 
+            {
+                if (value< 0)
+                {
+                    throw new InvalidHourlyRateException();
+                }
+                hourlyRate = value; 
+            }
+        }
+
 
         public override string PaySummary
         {
             get
             {
-                return $"Hourly employee {FirstName} {LastName} is owed {HourlyRate * 40.0M:C} for the week.";
+                return $"Hourly employee {FirstName} {LastName} is owed {hourlyRate * 40.0M:C} for the week.";
             }
         }
 

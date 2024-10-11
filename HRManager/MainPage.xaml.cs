@@ -21,47 +21,55 @@ namespace HRManager
             hourEmp.EmpNum = 2;
             hourEmp.FirstName = "Bill";
             hourEmp.LastName = "Gates";
-            hourEmp.HourlyRate = 20.00M;
-
-            Employee polymorphEmployee = hourEmp; //Child class object assigned into variable declared using parent class
-            //HourlyEmployee cantWork = emp; <--doesn't work
-
-            lblEmp1.Text = $"emp {emp}\nGetHashCode {emp.GetHashCode()}\nGetType {emp.GetType()}\nToString {emp.ToString()}";
-            lblEmp2.Text = $"hourEmp {hourEmp}\nGetHashCode {hourEmp.GetHashCode()}\nGetType {hourEmp.GetType()}\nToString {hourEmp.ToString()}";
-            lblEmp3.Text = $"{polymorphEmployee}\nGetHashCode {polymorphEmployee.GetHashCode()}\nGetType {polymorphEmployee.GetType()}\nToString {polymorphEmployee.ToString()}";
-
-            //Boxing
-            object aThing = emp;
-            lblAThing.Text = $"{aThing}";
-
-            //Unboxing
-            if (aThing is HourlyEmployee)
+            try
             {
-                HourlyEmployee unboxedEmp = (HourlyEmployee)aThing;
-                lblUnboxedEmp.Text = $"{unboxedEmp} earns {unboxedEmp.HourlyRate} an hour.";
-            }
-            else
-            {
-                lblUnboxedEmp.Text = $"{aThing} does not have an Hourly rate.";
-            }
+                hourEmp.HourlyRate = -20.00M;
 
-            List<Employee> empList = new List<Employee>();
-            empList.Add(emp);
-            empList.Add(hourEmp);
-            empList.Add(new HourlyEmployee());
-            empList.Add(new Employee());
 
-            foreach (Employee e in empList)
-            {
-                if (e is HourlyEmployee)
+                Employee polymorphEmployee = hourEmp; //Child class object assigned into variable declared using parent class
+                                                      //HourlyEmployee cantWork = emp; <--doesn't work
+
+                lblEmp1.Text = $"emp {emp}\nGetHashCode {emp.GetHashCode()}\nGetType {emp.GetType()}\nToString {emp.ToString()}";
+                lblEmp2.Text = $"hourEmp {hourEmp}\nGetHashCode {hourEmp.GetHashCode()}\nGetType {hourEmp.GetType()}\nToString {hourEmp.ToString()}";
+                lblEmp3.Text = $"{polymorphEmployee}\nGetHashCode {polymorphEmployee.GetHashCode()}\nGetType {polymorphEmployee.GetType()}\nToString {polymorphEmployee.ToString()}";
+
+                //Boxing
+                object aThing = emp;
+                lblAThing.Text = $"{aThing}";
+
+                //Unboxing
+                if (aThing is HourlyEmployee)
                 {
-                    HourlyEmployee unboxedEmp = (HourlyEmployee)e;
-                    lblList.Text += $"\n{unboxedEmp} earns {unboxedEmp.HourlyRate} an hour.";
+                    HourlyEmployee unboxedEmp = (HourlyEmployee)aThing;
+                    lblUnboxedEmp.Text = $"{unboxedEmp} earns {unboxedEmp.HourlyRate} an hour.";
                 }
                 else
                 {
-                    lblList.Text += $"\n{e} does not have an Hourly rate.";
+                    lblUnboxedEmp.Text = $"{aThing} does not have an Hourly rate.";
                 }
+
+                List<Employee> empList = new List<Employee>();
+                empList.Add(emp);
+                empList.Add(hourEmp);
+                empList.Add(new HourlyEmployee());
+                empList.Add(new Employee());
+
+                foreach (Employee e in empList)
+                {
+                    if (e is HourlyEmployee)
+                    {
+                        HourlyEmployee unboxedEmp = (HourlyEmployee)e;
+                        lblList.Text += $"\n{unboxedEmp} earns {unboxedEmp.HourlyRate} an hour.";
+                    }
+                    else
+                    {
+                        lblList.Text += $"\n{e} does not have an Hourly rate.";
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                lblEmp1.Text = $"Error! {ex.Message}";
             }
         }
     }
