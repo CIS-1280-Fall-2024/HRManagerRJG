@@ -7,20 +7,9 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Label Text="Emp 1 Info: " />
-            <Label x:Name="lblEmp1" />
-            <Label Text="Emp 2 Info: " />
-            <Label x:Name="lblEmp2" />
-            <Label Text="Emp 3 Info: " />
-            <Label x:Name="lblEmp3" />
-            <Label Text="aThing Info: " />
-            <Label x:Name="lblAThing" />
-            <Label Text="unboxedEmp Info: " />
-            <Label x:Name="lblUnboxedEmp" />
-
             <Label Text="List Info: " />
             <Label x:Name="lblList" />
-            
+            <Label x:Name="ErrorLabel"/>
         </VerticalStackLayout>
     </ScrollView>
 

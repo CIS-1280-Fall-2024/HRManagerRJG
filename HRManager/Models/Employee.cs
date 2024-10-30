@@ -1,9 +1,11 @@
-﻿namespace HRManager.Models
+﻿using HRManager.Interfaces;
+
+namespace HRManager.Models
 {
     /// <summary>
     /// Base class that represents any kind of employee
     /// </summary>
-    public class Employee
+    public class Employee:IPhoneBookItem
     {
         public Employee(int? empNum, string? firstName, string? lastName)
         {
@@ -21,6 +23,9 @@
         public string? FirstName {  get; set; }
         public string? LastName { get; set; }
 
+        public string Phone { get; set; }
+        public string Email { get; set; }
+
         public virtual string PaySummary
         {
             get
@@ -32,6 +37,13 @@
         public override string ToString()
         {
             return $"{EmpNum} {FirstName} {LastName}";
+        }
+
+        public string GetContactSummary()
+        {
+            return FirstName + " " + LastName + "\n" +
+                    "Phone: " + Phone + "\n" +
+                    "Email: " + Email;
         }
     }
 }
