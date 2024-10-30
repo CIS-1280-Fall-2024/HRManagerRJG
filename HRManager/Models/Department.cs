@@ -25,6 +25,7 @@ namespace HRManager.Models
             Email = email;
             WebSite = website;
         }
+
         public string GetContactSummary()
         {
             return  $"Department: {Name} \n"+

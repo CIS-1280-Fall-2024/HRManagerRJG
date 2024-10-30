@@ -4,7 +4,7 @@ namespace HRManager.Services
 {
     public class DepartmentsService
     {
-        public List<Department> Departments { get; set; };
+        public List<Department> Departments { get; set; }
 
         public DepartmentsService() 
         {

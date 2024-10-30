@@ -13,7 +13,7 @@ namespace HRManager.Services
 
         public EmployeeService() 
         {
-            Employee emp = new Employee();
+            SalaryEmployee emp = new SalaryEmployee();
             emp.EmpNum = 1;
             emp.FirstName = "Steve";
             emp.LastName = "Jobs";
